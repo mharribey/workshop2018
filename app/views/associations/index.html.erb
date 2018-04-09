@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Associations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Adresse</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @associations.each do |association| %>
+      <tr>
+        <td><%= association.nom %></td>
+        <td><%= association.description %></td>
+        <td><%= association.adresse %></td>
+        <td><%= link_to 'Show', association %></td>
+        <td><%= link_to 'Edit', edit_association_path(association) %></td>
+        <td><%= link_to 'Destroy', association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Association', new_association_path %>
