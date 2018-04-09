@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20180409100541) do
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-=======
-ActiveRecord::Schema.define(version: 20180409105454) do
+ActiveRecord::Schema.define(version: 20180409123451) do
 
   create_table "articles", force: :cascade do |t|
     t.string "titre"
@@ -49,6 +30,8 @@ ActiveRecord::Schema.define(version: 20180409105454) do
   create_table "contents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "translations_id"
+    t.index ["translations_id"], name: "index_contents_on_translations_id"
   end
 
   create_table "languages", primary_key: "code", force: :cascade do |t|
@@ -61,7 +44,25 @@ ActiveRecord::Schema.define(version: 20180409105454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "text"
->>>>>>> Stashed changes
+    t.integer "content_id"
+    t.index ["content_id"], name: "index_translations_on_content_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
